@@ -2,6 +2,7 @@
 require_once "protected/pdo.php";
 session_start();
 
+# alerts
 if ( isset($_SESSION['error']) ) {
     echo '<p style="color:red">'.$_SESSION['error']."</p>\n";
     unset($_SESSION['error']);
@@ -10,7 +11,7 @@ if ( isset($_SESSION['success']) ) {
     echo '<p style="color:green">'.$_SESSION['success']."</p>\n";
     unset($_SESSION['success']);
 }
-
+# POST
 if ( isset($_POST['item']) && isset($_POST['category']) ) {
     if ( $_POST['category'].'oi' === '0oi') {
         $_SESSION['error'] = 'You need to set a category';
@@ -32,7 +33,34 @@ if ( isset($_POST['item']) && isset($_POST['category']) ) {
 ?>
 <html>
 <head>
-    <?php print_r($_POST); ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+function htmlentities(str) {
+   return $('<div/>').text(str).html();
+}
+$(document).ready(function(){
+    $.getJSON('protected/getjson.php', function(rows) {
+    $("#mytab").empty();
+    console.log(rows);
+    found = false;
+    for (var i = 0; i < rows.length; i++) {
+        row = rows[i];
+        found = true;
+        window.console && console.log('Row: '+i+' '+row.item);
+        $("#mytab").append("<tr><td>"+htmlentities(row.item)+'</td><td>'
+            + htmlentities(row.quantity)+'</td><td>'
+            + htmlentities(row.category)+"</td><td>\n"
+            + '<a href="edit.php?id='+htmlentities(row.id)+'">'
+            + 'Edit</a> / '
+            + '<a href="delete.php?id='+htmlentities(row.id)+'">'
+            + 'Delete</a>\n</td></tr>');
+    }
+    if ( ! found ) {
+        $("#mytab").append("<tr><td>No entries found</td></tr>\n");
+    }
+});
+});
+</script>
 </head>
 <body>
 <p><b>Add something</b></p>
