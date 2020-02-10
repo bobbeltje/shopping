@@ -1,5 +1,5 @@
 <?php
-require_once "protected/pdo.php";
+require_once "pdo.php";
 session_start();
 
 # alerts
@@ -39,7 +39,7 @@ function htmlentities(str) {
    return $('<div/>').text(str).html();
 }
 $(document).ready(function(){
-    $.getJSON('protected/getjson.php', function(rows) {
+    $.getJSON('getjson.php', function(rows) {
     $("#mytab").empty();
     console.log(rows);
     found = false;
@@ -50,10 +50,8 @@ $(document).ready(function(){
         $("#mytab").append("<tr><td>"+htmlentities(row.item)+'</td><td>'
             + htmlentities(row.quantity)+'</td><td>'
             + htmlentities(row.category)+"</td><td>\n"
-            + '<a href="edit.php?id='+htmlentities(row.id)+'">'
-            + 'Edit</a> / '
-            + '<a href="delete.php?id='+htmlentities(row.id)+'">'
-            + 'Delete</a>\n</td></tr>');
+            + '<a href="edit.php?id='+htmlentities(row.id)+'">Edit</a> / '
+            + '<a href="delete.php?id='+htmlentities(row.id)+'">Delete</a>\n</td></tr>');
     }
     if ( ! found ) {
         $("#mytab").append("<tr><td>No entries found</td></tr>\n");
