@@ -21,8 +21,8 @@ if ( isset($_POST['item']) && isset($_POST['category']) ) {
     
     $nrows = $pdo->query("select count(*) from shopping_list")->fetchColumn();
     
-    if ($nrows > 5){
-        $_SESSION['error'] = 'List cannot have more than 6 elements';
+    if ($nrows >= 39){
+        $_SESSION['error'] = 'List cannot have more than 40 elements';
         header('Location: index.php');
     }else{
         $sql = "INSERT INTO shopping_list (item, category, quantity) 
@@ -68,6 +68,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<a href="clear_list.php">Clear the list</a>
 <p><b>Add something</b></p>
 <form method='post'>
     <p>Item: <input type='text' name='item'></p>
