@@ -18,16 +18,23 @@ if ( isset($_POST['item']) && isset($_POST['category']) ) {
         header( 'Location: index.php' ) ;
         return;
     }
-
-    $sql = "INSERT INTO shopping_list (item, category, quantity) 
-              VALUES (:item, :category, :quantity)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(
-        ':item' => $_POST['item'],
-        ':category' => $_POST['category'],
-        ':quantity' => $_POST['quantity']));
-   $_SESSION['success'] = 'Record Added';
-   header( 'Location: index.php' ) ;
+    
+    $nrows = $pdo->query("select count(*) from shopping_list")->fetchColumn();
+    
+    if ($nrows > 5){
+        $_SESSION['error'] = 'List cannot have more than 6 elements';
+        header('Location: index.php');
+    }else{
+        $sql = "INSERT INTO shopping_list (item, category, quantity) 
+                  VALUES (:item, :category, :quantity)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':item' => $_POST['item'],
+            ':category' => $_POST['category'],
+            ':quantity' => $_POST['quantity']));
+       $_SESSION['success'] = 'Record Added';
+       header( 'Location: index.php' ) ;
+    }
    return;
 }
 ?>
@@ -50,7 +57,7 @@ $(document).ready(function(){
         $("#mytab").append("<tr><td>"+htmlentities(row.item)+'</td><td>'
             + htmlentities(row.quantity)+'</td><td>'
             + htmlentities(row.category)+"</td><td>\n"
-            + '<a href="edit.php?id='+htmlentities(row.id)+'">Edit</a> / '
+            //~ + '<a href="edit.php?id='+htmlentities(row.id)+'">Edit</a> / '
             + '<a href="delete.php?id='+htmlentities(row.id)+'">Delete</a>\n</td></tr>');
     }
     if ( ! found ) {
