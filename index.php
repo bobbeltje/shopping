@@ -67,7 +67,7 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<body>
+<body style="transform: scale(2); transform-origin: 0 0;">
 <a href="clear_list.php">Clear the list</a>
 <p><b>Add something</b></p>
 <form method='post'>
