@@ -1,5 +1,6 @@
 <?php
 require_once "pdo.php";
+require_once "helpers.php";
 session_start();
 
 if ( isset($_POST['delete']) && isset($_POST['id']) ) {
@@ -20,8 +21,7 @@ if ( $row === false ) {
     return;
 }
 
-echo('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-');
+echo(make_head());
 echo("<div class='container-fluid'>");
 echo "<h3>Confirm: Deleting ".htmlentities($row['item'])."</h3>\n";
 
