@@ -45,6 +45,7 @@ if ( isset($_POST['item']) && isset($_POST['category']) ) {
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="www/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -65,7 +66,7 @@ $(document).ready(function(){
             + htmlentities(row.quantity)+'</td><td>'
             + htmlentities(row.category)+"</td><td>\n"
             //~ + '<a href="edit.php?id='+htmlentities(row.id)+'">Edit</a> / '
-            + '<a href="delete.php?id='+htmlentities(row.id)+'">Delete</a>\n</td></tr>');
+            + '<a class="btn btn-warning" href="delete.php?id='+htmlentities(row.id)+'">Delete</a>\n</td></tr>');
     }
     if ( ! found ) {
         $("#mytab").append("<tr><td>No entries found</td></tr>\n");
@@ -76,8 +77,9 @@ $(document).ready(function(){
 </head>
 <body>
 <div class='container-fluid'>
-<a href="clear_list.php">Clear the list</a>
-<p><b>Add something</b></p>
+<h1>Shopping list</h1>
+<div class='content-section'>
+<h3>Add something</h3>
 <form method='post'>
     <div class='form-group'>
         <p>Item: <input class='form-control' type='text' name='item'></p>
@@ -97,10 +99,12 @@ $(document).ready(function(){
     </div>
    <input class='btn btn-primary' type='submit' value='Add'>
 </form>
-<table>
+</div>
+<table class='table'>
   <tbody id="mytab">
   </tbody>
 </table>
+<a class='btn btn-danger' href="clear_list.php">Clear the list</a>
 </div>
 </body>
 </html>

@@ -1,0 +1,11 @@
+body {
+ background: #b3d6e1ff;
+}
+.content-section {
+  background: #cbd5db;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+

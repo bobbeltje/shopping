@@ -11,10 +11,15 @@ if ( isset($_POST['delete']) ) {
     return;
 }
 
-echo "<p>Clear the entire list?</p>\n";
+echo('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+');
+echo("<div class='container-fluid'>");
+echo "<h3>Clear the entire list?</h3>\n";
 
 echo('<form method="post">');
-echo('<input type="submit" value="Delete" name="delete">');
+echo('<input class="btn btn-danger" type="submit" value="Delete" name="delete">');
+echo('<div class="form-group">');
 echo('<a href="index.php">Cancel</a>');
+echo('</div>');
 echo("\n</form>\n");
-
+echo('</div>');
