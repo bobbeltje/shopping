@@ -92,10 +92,10 @@ $(document).ready(function(){
         <option value="Snacks">Snacks</option>
         <option value="Dairy">Dairy</option>
         <option value="Frozen">Frozen</option>
-        <option value="Drinks">Dairy</option>
-        <option value="Household">Dairy</option>
-        <option value="Pasta etc">Dairy</option>
-        <option value="Other">Dairy</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Household">Household</option>
+        <option value="Pasta etc">Pasta etc</option>
+        <option value="Other">Other</option>
         </select>
     </div>
     <div class='form-group'>
