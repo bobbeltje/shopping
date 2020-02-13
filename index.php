@@ -89,9 +89,13 @@ $(document).ready(function(){
         <select class='form-control' name="category" id="category">
         <option value="0">-- Please Select --</option>
         <option value="Veggies">Veggies</option>
-        <option value="Frozen">Frozen</option>
         <option value="Snacks">Snacks</option>
         <option value="Dairy">Dairy</option>
+        <option value="Frozen">Frozen</option>
+        <option value="Drinks">Dairy</option>
+        <option value="Household">Dairy</option>
+        <option value="Pasta etc">Dairy</option>
+        <option value="Other">Dairy</option>
         </select>
     </div>
     <div class='form-group'>
