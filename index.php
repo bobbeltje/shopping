@@ -49,6 +49,7 @@ if ( isset($_POST['item']) && isset($_POST['category']) ) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="www/js.js"></script>
 <script>
 function htmlentities(str) {
    return $('<div/>').text(str).html();
@@ -61,8 +62,11 @@ $(document).ready(function(){
     for (var i = 0; i < rows.length; i++) {
         row = rows[i];
         found = true;
-        window.console && console.log('Row: '+i+' '+row.item);
-        $("#mytab").append("<tr><td>"+htmlentities(row.item)+'</td><td>'
+        var tmp = "row_" + row.id;
+        //~ window.console && console.log('Row: '+i+' '+row.item);
+        $("#mytab").append("<tr id='"+tmp+"'><td>"
+            + '<a class="btn btn-success" onclick="change_opacity(' +tmp+ ')">X</a>\n</td><td>'
+            + htmlentities(row.item)+'</td><td>'
             + htmlentities(row.quantity)+'</td><td>'
             + htmlentities(row.category)+"</td><td>\n"
             //~ + '<a href="edit.php?id='+htmlentities(row.id)+'">Edit</a> / '

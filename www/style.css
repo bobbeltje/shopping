@@ -8,4 +8,9 @@ body {
   border-radius: 3px;
   margin-bottom: 20px;
 }
-
+.show {
+  opacity: 1;
+}
+.hide {
+  opacity: .2;
+}
