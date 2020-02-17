@@ -64,13 +64,13 @@ $(document).ready(function(){
         found = true;
         var tmp = "row_" + row.id;
         //~ window.console && console.log('Row: '+i+' '+row.item);
-        $("#mytab").append("<tr id='"+tmp+"'><td>"
-            + '<a class="btn btn-success" onclick="change_opacity(' +tmp+ ')">X</a>\n</td><td>'
+        $("#mytab").append("<tr id='"+tmp+"'>"
+            + '<td onclick="change_opacity(' +tmp+ ')">'
             + htmlentities(row.item)+'</td><td>'
             + htmlentities(row.quantity)+'</td><td>'
             + htmlentities(row.category)+"</td><td>\n"
             //~ + '<a href="edit.php?id='+htmlentities(row.id)+'">Edit</a> / '
-            + '<a class="btn btn-warning" href="delete.php?id='+htmlentities(row.id)+'">Delete</a>\n</td></tr>');
+            + '<a class="btn btn-warning" href="delete.php?id='+htmlentities(row.id)+'">X</a>\n</td></tr>');
     }
     if ( ! found ) {
         $("#mytab").append("<tr><td>No entries found</td></tr>\n");
