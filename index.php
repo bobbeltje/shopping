@@ -68,7 +68,7 @@ $(document).ready(function(){
             + '<td onclick="change_opacity(' +tmp+ ')">'
             + htmlentities(row.item)+'</td><td>'
             + htmlentities(row.quantity)+'</td><td>'
-            + htmlentities(row.category)+"</td><td>\n"
+            + htmlentities(row.category)+"</td><td class='action'>\n"
             //~ + '<a href="edit.php?id='+htmlentities(row.id)+'">Edit</a> / '
             + '<a class="btn btn-warning" href="delete.php?id='+htmlentities(row.id)+'">X</a>\n</td></tr>');
     }
