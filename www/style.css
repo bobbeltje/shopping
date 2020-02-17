@@ -14,3 +14,10 @@ body {
 .hide {
   opacity: .2;
 }
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+td {
+    word-wrap: break-word;
+}
